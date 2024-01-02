@@ -1,0 +1,27 @@
+pipeline {
+	agent any 
+		tools {
+  maven 'maven'
+}
+	
+	stages {
+	stage('SCM') {
+		steps {
+				git changelog: false, poll: false, url: 'https://github.com/nrpeddireddy/onlinebookstore.git'
+		
+		}
+	
+	}
+	
+	
+	stage('MAVEN') {
+		steps {
+			sh 'mvn clean package'
+		
+		}
+	
+	}
+	
+	}
+
+}
